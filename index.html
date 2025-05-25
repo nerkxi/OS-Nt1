@@ -76,6 +76,54 @@
             text-align: center;
         }
 
+/* Доска почёта - отдельная плитка */
+        .honor-board {
+            width: 100%;
+            max-width: 600px;
+            margin: 40px auto;
+            background: #111;
+            border: 3px solid #d4af37;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.3);
+        }
+
+        .honor-title {
+            background: #8B0000;
+            color: gold;
+            text-align: center;
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 1px 1px 3px black;
+            border-bottom: 2px solid gold;
+        }
+
+        .honor-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+            border-top: 2px solid #333;
+            border-bottom: 2px solid #333;
+        }
+
+        .honor-footer {
+            padding: 15px;
+            text-align: center;
+            background: #252525;
+            font-style: italic;
+        }
+
+        /* Разделительная линия */
+        .separator {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #d4af37, transparent);
+            margin: 40px 10%;
+            border: none;
+        }
         /* Стили для "ликвидированных" карточек */
         .card-liquidated {
             opacity: 0.9; /* Полупрозрачность */
@@ -97,6 +145,11 @@
             text-decoration: line-through; /* Перечёркивание */
             font-weight: bold;
         }
+
+
+
+
+
     </style>
 </head>
 <body>
@@ -142,7 +195,18 @@
                     </div>
                 </div>
             </div>
+<!-- Доска почёта -->
+    <div class="honor-board">
+        <div class="honor-title">ДОСКА ЛИКИВИДИРОВАННЫХ 
+        ПОПУСКОВ</div>
+        <img src="images/photo_5316759751549380006_x.jpg" alt="Фото для доски почёта" class="honor-image">
+        <div class="honor-footer">
+            никита с ЛИКИВИДИРОВАН
+        </div>
+    </div>
 
+    <!-- Разделитель -->
+    <hr class="separator">
             <!-- Две дополнительные плиточки с красным текстом и эффектом ликвидации -->
             <div class="cards-container" style="margin-top: 20px;">
                 <div class="card card-liquidated">
@@ -157,8 +221,11 @@
                     <div class="card-caption liquidated-text">
                         ЛИКВИДИРОВАНО
                         <div class="honor-board">
-        
-                    </div>
+
+                    </div> <!-- Разделитель -->
+    <hr class="separator">
+
+
                 </div>
             </div>
         </div>
