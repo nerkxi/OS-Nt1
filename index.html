@@ -145,43 +145,56 @@
             text-decoration: line-through; /* Перечёркивание */
             font-weight: bold;
         }
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #f0f0f0; /* Фон для наглядности */
+            font-family: Arial, sans-serif;
+        }
 
+        .news-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
 
-
-.news-tile {
+        .news-tile {
             width: 300px;
             padding: 20px;
-            margin: 20px;
             background: #1e1e1e;
             color: #fff;
             border-radius: 10px;
             box-shadow: 0 0 15px rgba(0, 162, 255, 0.7);
             border: 2px solid #00a2ff;
             transition: box-shadow 0.3s ease;
+            /* Важно: не фиксируем высоту, чтобы контент не обрезался */
+            min-height: 0; /* Разрешаем сжатие */
+            overflow: visible; /* Отключаем обрезку */
         }
-        
+
         .news-tile:hover {
             box-shadow: 0 0 25px rgba(0, 162, 255, 0.9);
         }
-        
+
         .news-title {
             font-size: 20px;
             margin-bottom: 10px;
             color: #00a2ff;
         }
-        
+
         .news-content {
             font-size: 14px;
             line-height: 1.5;
+            /* Перенос длинных слов */
+            overflow-wrap: break-word;
         }
-        
+
         .news-date {
             font-size: 12px;
             color: #aaa;
             margin-top: 10px;
             text-align: right;
         }
-
     </style>
 </head>
 <body>
@@ -255,16 +268,23 @@
                         "погиб в бою за 1 грамм"
                         <div class="honor-board">
 
-                    </div> <!-- Разделитель -->
-    <hr class="separator">
-                        <div class="news-tile">
-        <div class="news-title">Важная новость дня</div>
-        <div class="news-content">
-            Никита в плену и был убит членом
-        </div>
-        <div class="news-date">26 мая 2025</div>
                         </div>
+<div class="news-container">
+        <div class="news-tile">
+            <div class="news-title">Важная новость дня</div>
+            <div class="news-content">
+                Сегодня произошло знаменательное событие — запуск нового проекта, который изменит будущее технологий. В рамках инициативы разработаны инновационные решения для AI, которые ускорят обработку данных в 10 раз.
+            </div>
+            <div class="news-date">26 мая 2025</div>
+        </div>
 
+        <div class="news-tile">
+            <div class="news-title">Обновление программного обеспечения</div>
+            <div class="news-content">
+                Вышла новая версия операционной системы с улучшенной безопасностью и поддержкой нейросетевых моделей. Пользователи отмечают возросшую стабильность и скорость работы даже на слабых устройствах.
+            </div>
+            <div class="news-date">27 мая 2025</div>
+        </div>
 
                 </div>
             </div>
