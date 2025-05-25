@@ -97,6 +97,37 @@
             text-decoration: line-through; /* Перечёркивание */
             font-weight: bold;
         }
+        /* Стили для доски почёта */
+        .honor-board {
+            width: 80%;
+            max-width: 600px;
+            margin: 40px auto;
+            position: relative;
+            border: 3px solid #d4af37; /* Золотая рамка */
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        }
+        
+        .honor-title {
+            background: linear-gradient(to right, #8B0000, #B22222, #8B0000);
+            color: gold;
+            text-align: center;
+            padding: 15px;
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 1px 1px 2px black;
+            border-bottom: 2px solid gold;
+        }
+        
+        .honor-photo {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -156,6 +187,10 @@
                     <img src="images/photo_5291969788727391432_y.jpg" alt="паша ауе">
                     <div class="card-caption liquidated-text">
                         ЛИКВИДИРОВАНО
+                        <div class="honor-board">
+        <div class="honor-title">ЛИКВИДИРОВННЫЕ ПОПУСКИ ГОДА</div>
+        <img src="images/photo_5316759751549380006_x.jpg" alt="Фото для доски почёта" class="honor-photo">
+    </div>
                     </div>
                 </div>
             </div>
