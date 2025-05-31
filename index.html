@@ -220,9 +220,9 @@
                         должен:500+100 рублей, 3 извенения
                     </div>
                 </div>
-<div class="timer-tile">
-  <h3>До конца срока долга юля с осталось:</h3>
-  <div class="timer-display">
+<div class="timer-tile" id="timerContainer">
+  <h3>До конца срока долга Юли осталось:</h3>
+  <div class="timer-display" id="timerDisplay">
     <div class="timer-unit">
       <span id="days">00</span>
       <small>дней</small>
@@ -240,6 +240,10 @@
       <small>секунд</small>
     </div>
   </div>
+  <div class="expired-message" id="expiredMessage" style="display: none;">
+    <h2>Время истекло!</h2>
+    <p>Долг не выплачен</p>
+  </div>
 </div>
 
 <style>
@@ -252,6 +256,7 @@
   max-width: 400px;
   margin: 20px auto;
   font-family: Arial, sans-serif;
+  position: relative;
 }
 
 .timer-tile h3 {
@@ -280,29 +285,50 @@
   color: #7f8c8d;
   font-size: 12px;
 }
+
+.expired-message {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.expired-message h2 {
+  color: red;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.expired-message p {
+  color: #2c3e50;
+  font-size: 18px;
+  font-weight: bold;
+}
 </style>
 
 <script>
 function updateTimer() {
-  // Устанавливаем дату 3 июня текущего года
   const now = new Date();
-  let targetYear = now.getFullYear();
-  const targetDate = new Date(targetYear, 5, 3); // месяц 5 = июнь (0-11)
-  
-  // Если 3 июня уже прошло в этом году, берем следующий год
-  if (now > targetDate) {
-    targetYear += 1;
-    targetDate.setFullYear(targetYear);
-  }
+  const targetDate = new Date(now.getFullYear(), 5, 3); // 3 июня текущего года
   
   const difference = targetDate - now;
   
+  const timerDisplay = document.getElementById('timerDisplay');
+  const expiredMessage = document.getElementById('expiredMessage');
+  
   if (difference <= 0) {
     // Если таймер истек
-    document.getElementById('days').textContent = '00';
-    document.getElementById('hours').textContent = '00';
-    document.getElementById('minutes').textContent = '00';
-    document.getElementById('seconds').textContent = '00';
+    timerDisplay.style.display = 'none';
+    document.querySelector('h3').style.display = 'none';
+    expiredMessage.style.display = 'flex';
     return;
   }
   
@@ -317,7 +343,6 @@ function updateTimer() {
   document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
 }
 
-// Обновляем таймер сразу и затем каждую секунду
 updateTimer();
 setInterval(updateTimer, 1000);
 </script>
