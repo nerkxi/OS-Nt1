@@ -221,7 +221,6 @@
                     </div>
                 </div>
 
-<!-- Таймер будет под этой плиткой -->  
 <div class="timer-tile">
   <h3>До 3 июля осталось:</h3>
   <div class="timer-display">
@@ -243,6 +242,86 @@
     </div>
   </div>
 </div>
+
+<style>
+.timer-tile {
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  max-width: 400px;
+  margin: 20px auto;
+  font-family: Arial, sans-serif;
+}
+
+.timer-tile h3 {
+  margin-top: 0;
+  color: #333333;
+}
+
+.timer-display {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.timer-unit {
+  flex: 1;
+}
+
+.timer-unit span {
+  display: block;
+  font-size: 24px;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.timer-unit small {
+  color: #7f8c8d;
+  font-size: 12px;
+}
+</style>
+
+<script>
+function updateTimer() {
+  // Устанавливаем дату 3 июля текущего года
+  const now = new Date();
+  let targetYear = now.getFullYear();
+  const targetDate = new Date(targetYear, 6, 3); // месяц 6 = июль (0-11)
+  
+  // Если 3 июля уже прошло в этом году, берем следующий год
+  if (now > targetDate) {
+    targetYear += 1;
+    targetDate.setFullYear(targetYear);
+  }
+  
+  const difference = targetDate - now;
+  
+  if (difference <= 0) {
+    // Если таймер истек
+    document.getElementById('days').textContent = '00';
+    document.getElementById('hours').textContent = '00';
+    document.getElementById('minutes').textContent = '00';
+    document.getElementById('seconds').textContent = '00';
+    return;
+  }
+  
+  const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+  
+  document.getElementById('days').textContent = days.toString().padStart(2, '0');
+  document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+  document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+  document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+}
+
+// Обновляем таймер сразу и затем каждую секунду
+updateTimer();
+setInterval(updateTimer, 1000);
+</script>
 
                 <div class="card">
                     <img src="https://i.pinimg.com/originals/7a/20/03/7a20038c852c1c60440c2e98fa77e4f6.jpg" alt="Фото 3">
