@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+7<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -220,7 +220,6 @@
                         должен:500+100 рублей, 3 извенения
                     </div>
                 </div>
-
 <div class="timer-tile">
   <h3>До конца срока долга юля с осталось:</h3>
   <div class="timer-display">
@@ -285,12 +284,12 @@
 
 <script>
 function updateTimer() {
-  // Устанавливаем дату 3 июля текущего года
+  // Устанавливаем дату 3 июня текущего года
   const now = new Date();
   let targetYear = now.getFullYear();
-  const targetDate = new Date(targetYear, 6, 3); // месяц 6 = июль (0-11)
+  const targetDate = new Date(targetYear, 5, 3); // месяц 5 = июнь (0-11)
   
-  // Если 3 июля уже прошло в этом году, берем следующий год
+  // Если 3 июня уже прошло в этом году, берем следующий год
   if (now > targetDate) {
     targetYear += 1;
     targetDate.setFullYear(targetYear);
