@@ -402,13 +402,25 @@ setInterval(updateTimer, 1000);
   }
 </style>
 
-<div class="debt-tile" onclick="document.getElementById('debt-song').play()">
+<div class="debt-tile" id="playButton">
   <span class="arrow">➔</span>
   Снять долги
-  <span class="arrow"><—</span>
+  <span class="arrow">➔</span>
 </div>
 
-<audio id="debt-song" src="https://rus.hitmotop.com/song/76249082#"></audio>
+<script>
+  // Создаем аудио элемент программно для лучшей совместимости
+  const audio = new Audio('https://rus.hitmotop.com/song/76249082#'); // ЗАМЕНИТЕ на реальную ссылку
+  
+  // Обработчик клика
+  document.getElementById('playButton').addEventListener('click', function() {
+    audio.currentTime = 0; // Перематываем в начало
+    audio.play().catch(e => {
+      console.error("Ошибка воспроизведения:", e);
+      alert("Нажмите 'Разрешить' в браузере для воспроизведения звука");
+    });
+  });
+</script>
          
 <!-- Доска почёта -->
     <div class="honor-board">
