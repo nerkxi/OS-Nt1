@@ -166,14 +166,100 @@
             background: rgba(0, 0, 0, 0.4); /* Затемнение */
         }
 
-        
+        .timer-tile {
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            max-width: 400px;
+            margin: 20px auto;
+            font-family: Arial, sans-serif;
+            position: relative;
+        }
+
+        .timer-tile h3 {
+            margin-top: 0;
+            color: red;
+        }
+
+        .timer-display {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+
+        .timer-unit {
+            flex: 1;
+        }
+
+        .timer-unit span {
+            display: block;
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .timer-unit small {
+            color: #7f8c8d;
+            font-size: 12px;
+        }
+
+        .expired-message {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .expired-message h2 {
+            color: red;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .expired-message p {
+            color: #2c3e50;
+            font-size: 18px;
             font-weight: bold;
         }
-        body {
-            margin: 0;
-            padding: 20px;
-            background: #f0f0f0; /* Фон для наглядности */
+
+        .debt-tile {
+            display: inline-flex;
+            align-items: center;
+            padding: 15px 25px;
+            background: #000;
+            color: #00BFFF;
+            border: 3px solid #FF0000;
+            border-radius: 8px;
             font-family: Arial, sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 10px;
+            text-decoration: none;
+            gap: 15px;
+        }
+        .debt-tile:hover {
+            background: #222;
+            transform: scale(1.05);
+        }
+        .debt-tile:active {
+            transform: scale(0.98);
+        }
+        .arrow {
+            font-size: 24px;
+            color: #00BFFF;
         }
 
         .news-container {
@@ -191,9 +277,8 @@
             box-shadow: 0 0 15px rgba(0, 162, 255, 0.7);
             border: 2px solid #00a2ff;
             transition: box-shadow 0.3s ease;
-            /* Важно: не фиксируем высоту, чтобы контент не обрезался */
-            min-height: 0; /* Разрешаем сжатие */
-            overflow: visible; /* Отключаем обрезку */
+            min-height: 0;
+            overflow: visible;
         }
 
         .news-tile:hover {
@@ -209,7 +294,6 @@
         .news-content {
             font-size: 14px;
             line-height: 1.5;
-            /* Перенос длинных слов */
             overflow-wrap: break-word;
         }
 
@@ -218,6 +302,13 @@
             color: #aaa;
             margin-top: 10px;
             text-align: right;
+        }
+
+        /* Контейнер для элементов внизу */
+        .bottom-section {
+            margin-top: 40px;
+            padding: 20px;
+            text-align: center;
         }
     </style>
 </head>
@@ -255,142 +346,14 @@
                     <img src="images/IMG_20250525_103932_422.jpg" alt="Фото 2">
                     <div class="card-caption">
                         юля сайк               
-
                         должен:400 рублей, 1 извенения
                     </div>
                 </div>
-<div class="timer-tile" id="timerContainer">
-  <h3>До конца срока долга Юли осталось:</h3>
-  <div class="timer-display" id="timerDisplay">
-    <div class="timer-unit">
-      <span id="days">00</span>
-      <small>дней</small>
-    </div>
-    <div class="timer-unit">
-      <span id="hours">00</span>
-      <small>часов</small>
-    </div>
-    <div class="timer-unit">
-      <span id="minutes">00</span>
-      <small>минут</small>
-    </div>
-    <div class="timer-unit">
-      <span id="seconds">00</span>
-      <small>секунд</small>
-    </div>
-  </div>
-  <div class="expired-message" id="expiredMessage" style="display: none;">
-    <h2>Время истекло!</h2>
-    <p>Долг не выплачен</p>
-  </div>
-</div>
-
-<style>
-.timer-tile {
-  background: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  text-align: center;
-  max-width: 400px;
-  margin: 20px auto;
-  font-family: Arial, sans-serif;
-  position: relative;
-}
-
-.timer-tile h3 {
-  margin-top: 0;
-  color: red;
-}
-
-.timer-display {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 15px;
-}
-
-.timer-unit {
-  flex: 1;
-}
-
-.timer-unit span {
-  display: block;
-  font-size: 24px;
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-.timer-unit small {
-  color: #7f8c8d;
-  font-size: 12px;
-}
-
-.expired-message {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: #ffffff;
-  border-radius: 10px;
-  padding: 20px;
-}
-
-.expired-message h2 {
-  color: red;
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-
-.expired-message p {
-  color: #2c3e50;
-  font-size: 18px;
-  font-weight: bold;
-}
-</style>
-
-<script>
-function updateTimer() {
-  const now = new Date();
-  const targetDate = new Date(now.getFullYear(), 5, 3); // 3 июня текущего года
-  
-  const difference = targetDate - now;
-  
-  const timerDisplay = document.getElementById('timerDisplay');
-  const expiredMessage = document.getElementById('expiredMessage');
-  
-  if (difference <= 0) {
-    // Если таймер истек
-    timerDisplay.style.display = 'none';
-    document.querySelector('h3').style.display = 'none';
-    expiredMessage.style.display = 'flex';
-    return;
-  }
-  
-  const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-  
-  document.getElementById('days').textContent = days.toString().padStart(2, '0');
-  document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-  document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-  document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-}
-
-updateTimer();
-setInterval(updateTimer, 1000);
-</script>
 
                 <div class="card">
                     <img src="https://i.pinimg.com/originals/7a/20/03/7a20038c852c1c60440c2e98fa77e4f6.jpg" alt="Фото 3">
                     <div class="card-caption">
                         соданот254
-
                         должен:10к
                     </div>
                 </div>
@@ -402,71 +365,20 @@ setInterval(updateTimer, 1000);
                         должен:МИНЕТ
                     </div>
                 </div>
+            </div>
 
-<style>
-  .debt-tile {
-    display: inline-flex;
-    align-items: center;
-    padding: 15px 25px;
-    background: #000;
-    color: #00BFFF;
-    border: 3px solid #FF0000;
-    border-radius: 8px;
-    font-family: Arial, sans-serif;
-    font-size: 20px;
-    font-weight: bold;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.3s;
-    margin: 10px;
-    text-decoration: none;
-    gap: 15px;
-  }
-  .debt-tile:hover {
-    background: #222;
-    transform: scale(1.05);
-  }
-  .debt-tile:active {
-    transform: scale(0.98);
-  }
-  .arrow {
-    font-size: 24px;
-    color: #00BFFF;
-  }
-</style>
+            <!-- Доска почёта -->
+            <div class="honor-board">
+                <div class="honor-title">ДОСКА ЛИКИВИДИРОВАННЫХ ПОПУСКОВ</div>
+                <img src="images/photo_5316759751549380006_x.jpg" alt="Фото для доски почёта" class="honor-image">
+                <div class="honor-footer">
+                   <p><span style="color: red;">ЛИКВИДИРОВАН "убит на перестрелки членами"</span></p> 
+                </div>
+            </div>
 
-<div class="debt-tile" id="playButton">
-  <span class="arrow">➔</span>
-  Снять долги
-  <span class="arrow">➔</span>
-</div>
+            <!-- Разделитель -->
+            <hr class="separator">
 
-<script>
-  // Создаем аудио элемент программно для лучшей совместимости
-  const audio = new Audio('images/AudioCutter_iksajj_-_CHestnyjj_chelovek_76249082.mp3'); // ЗАМЕНИТЕ на реальную ссылку
-  
-  // Обработчик клика
-  document.getElementById('playButton').addEventListener('click', function() {
-    audio.currentTime = 0; // Перематываем в начало
-    audio.play().catch(e => {
-      console.error("Ошибка воспроизведения:", e);
-      alert("Нажмите 'Разрешить' в браузере для воспроизведения звука");
-    });
-  });
-</script>
-         
-<!-- Доска почёта -->
-    <div class="honor-board">
-        <div class="honor-title">ДОСКА ЛИКИВИДИРОВАННЫХ 
-        ПОПУСКОВ</div>
-        <img src="images/photo_5316759751549380006_x.jpg" alt="Фото для доски почёта" class="honor-image">
-        <div class="honor-footer">
-           <p><span style="color: red;">ЛИКВИДИРОВАН "убит на перестрелки членами"</span></p> 
-        </div>
-    </div>
-
-    <!-- Разделитель -->
-    <hr class="separator">
             <!-- Две дополнительные плиточки с красным текстом и эффектом ликвидации -->
             <div class="cards-container" style="margin-top: 20px;">
                 <div class="card card-liquidated">
@@ -481,26 +393,58 @@ setInterval(updateTimer, 1000);
                     <div class="card-caption liquidated-text">
                         ЛИКВИДИРОВАН 
                         "погиб в бою за 1 грамм"
-                        <div class="honor-board">
-
-                        </div>
-<div class="news-container">
-        <div class="news-tile">
-            <div class="news-title">Важная новость дня</div>
-            <div class="news-content">
-                у Никита начали рости лобоковые волосы
-            </div>
-            <div class="news-date">26 мая 2025</div>
-            <div class="news-content">
-                у юли сок щовель 
-            </div>
-            <div class="news-date">30 мая 2025</div>
-        </div>
-
-        
-
+                    </div>
                 </div>
             </div>
+
+            <div class="news-container">
+                <div class="news-tile">
+                    <div class="news-title">Важная новость дня</div>
+                    <div class="news-content">
+                        у Никита начали рости лобоковые волосы
+                    </div>
+                    <div class="news-date">26 мая 2025</div>
+                    <div class="news-content">
+                        у юли сок щовель 
+                    </div>
+                    <div class="news-date">30 мая 2025</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Элементы внизу страницы (не исчезают при открытии должников) -->
+    <div class="bottom-section">
+        <div class="timer-tile" id="timerContainer">
+            <h3>До конца срока долга Юли осталось:</h3>
+            <div class="timer-display" id="timerDisplay">
+                <div class="timer-unit">
+                    <span id="days">00</span>
+                    <small>дней</small>
+                </div>
+                <div class="timer-unit">
+                    <span id="hours">00</span>
+                    <small>часов</small>
+                </div>
+                <div class="timer-unit">
+                    <span id="minutes">00</span>
+                    <small>минут</small>
+                </div>
+                <div class="timer-unit">
+                    <span id="seconds">00</span>
+                    <small>секунд</small>
+                </div>
+            </div>
+            <div class="expired-message" id="expiredMessage" style="display: none;">
+                <h2>Время истекло!</h2>
+                <p>Долг не выплачен</p>
+            </div>
+        </div>
+
+        <div class="debt-tile" id="playButton">
+            <span class="arrow">➔</span>
+            Снять долги
+            <span class="arrow">➔</span>
         </div>
     </div>
 
@@ -513,6 +457,48 @@ setInterval(updateTimer, 1000);
             } else {
                 container.style.display = 'flex';
             }
+        });
+
+        // Таймер
+        function updateTimer() {
+            const now = new Date();
+            const targetDate = new Date(now.getFullYear(), 5, 3); // 3 июня текущего года
+            
+            const difference = targetDate - now;
+            
+            const timerDisplay = document.getElementById('timerDisplay');
+            const expiredMessage = document.getElementById('expiredMessage');
+            
+            if (difference <= 0) {
+                // Если таймер истек
+                timerDisplay.style.display = 'none';
+                document.querySelector('h3').style.display = 'none';
+                expiredMessage.style.display = 'flex';
+                return;
+            }
+            
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+
+        updateTimer();
+        setInterval(updateTimer, 1000);
+
+        // Аудио кнопка
+        const audio = new Audio('images/AudioCutter_iksajj_-_CHestnyjj_chelovek_76249082.mp3');
+        document.getElementById('playButton').addEventListener('click', function() {
+            audio.currentTime = 0;
+            audio.play().catch(e => {
+                console.error("Ошибка воспроизведения:", e);
+                alert("Нажмите 'Разрешить' в браузере для воспроизведения звука");
+            });
         });
     </script>
 </body>
