@@ -458,9 +458,24 @@
     </div>
 
     <script>
+        // Создаем аудио элемент для плитки должников
+        const debtAudio = new Audio('images/AudioCutter_iksajj_-_CHestnyjj_chelovek_76249082.mp3');
+        debtAudio.volume = 1.0;
+        
         // Обработчик клика по главной плитке
         document.getElementById('mainDebtTile').addEventListener('click', function() {
             const container = document.getElementById('debtorsContainer');
+            
+            // Воспроизводим музыку при клике
+            try {
+                debtAudio.currentTime = 0;
+                debtAudio.play().catch(e => {
+                    console.error("Ошибка воспроизведения при клике на должников:", e);
+                });
+            } catch (e) {
+                console.error("Ошибка:", e);
+            }
+            
             if (container.style.display === 'flex') {
                 container.style.display = 'none';
             } else {
