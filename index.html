@@ -44,9 +44,35 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
+        /* Главная плитка должников */
+        .main-debt-tile {
+            width: 80%;
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 30px;
+            background: rgba(30, 30, 30, 0.9);
+            border: 4px solid red;
+            border-radius: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+        }
+
+        .main-debt-tile:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.7);
+        }
+
+        .main-debt-tile h2 {
+            color: red;
+            font-size: 2.5em;
+            margin: 0;
+        }
+
         /* Стили для плиточек (карточек) */
         .cards-container {
-            display: flex;
+            display: none; /* Сначала скрыты */
             flex-wrap: wrap;
             justify-content: center;
             gap: 20px;
@@ -76,7 +102,7 @@
             text-align: center;
         }
 
-/* Доска почёта - отдельная плитка */
+        /* Доска почёта - отдельная плитка */
         .honor-board {
             width: 100%;
             max-width: 600px;
@@ -202,8 +228,14 @@
             <h1>ДОЛЖНИКИ КАРТЕЛЯ</h1>
             <p>ДОЛЖНИКИ:</p>
 
-            <!-- Обычные плиточки -->
-            <div class="cards-container">
+            <!-- Главная плитка должников -->
+            <div class="main-debt-tile" id="mainDebtTile">
+                <h2>ДОЛЖНИКИ</h2>
+                <p>Нажмите, чтобы увидеть список должников</p>
+            </div>
+
+            <!-- Обычные плиточки (изначально скрыты) -->
+            <div class="cards-container" id="debtorsContainer">
                 <div class="card">
                     <img src="images/photo_5271547756105823082_y.jpg" alt="гриша 15к">
                     <div class="card-caption">
@@ -212,7 +244,7 @@
                     </div>
                 </div>
 
-<div class="card">
+                <div class="card">
                     <img src="images/IMG_20250602_172158_873.jpg" alt="Фото 2">
                     <div class="card-caption">
 никита шем 
@@ -471,5 +503,17 @@ setInterval(updateTimer, 1000);
             </div>
         </div>
     </div>
+
+    <script>
+        // Обработчик клика по главной плитке
+        document.getElementById('mainDebtTile').addEventListener('click', function() {
+            const container = document.getElementById('debtorsContainer');
+            if (container.style.display === 'flex') {
+                container.style.display = 'none';
+            } else {
+                container.style.display = 'flex';
+            }
+        });
+    </script>
 </body>
 </html>
