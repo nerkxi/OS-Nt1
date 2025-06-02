@@ -369,6 +369,46 @@ setInterval(updateTimer, 1000);
                         должен:МИНЕТ
                     </div>
                 </div>
+
+<style>
+  .debt-tile {
+    display: inline-flex;
+    align-items: center;
+    padding: 15px 25px;
+    background: #000;
+    color: #00BFFF;
+    border: 3px solid #FF0000;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin: 10px;
+    text-decoration: none;
+    gap: 15px;
+  }
+  .debt-tile:hover {
+    background: #222;
+    transform: scale(1.05);
+  }
+  .debt-tile:active {
+    transform: scale(0.98);
+  }
+  .arrow {
+    font-size: 24px;
+    color: #00BFFF;
+  }
+</style>
+
+<div class="debt-tile" onclick="document.getElementById('debt-song').play()">
+  <span class="arrow">➔</span>
+  Снять долги
+  <span class="arrow">➔</span>
+</div>
+
+<audio id="debt-song" src="https://music.yandex.ru/album/25474374/track/105574944"></audio>
          
 <!-- Доска почёта -->
     <div class="honor-board">
