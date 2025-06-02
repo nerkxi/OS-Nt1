@@ -492,14 +492,67 @@
         updateTimer();
         setInterval(updateTimer, 1000);
 
-        // Аудио кнопка
+        // Аудио кнопка с максимальной громкостью
         const audio = new Audio('images/AudioCutter_iksajj_-_CHestnyjj_chelovek_76249082.mp3');
+        audio.volume = 1.0; // Устанавливаем максимальную громкость (1.0 - это 100%)
+        
+        // Функция для воспроизведения с максимальной громкостью
+        function playWithMaxVolume() {
+            try {
+                audio.volume = 1.0; // Гарантируем максимальную громкость
+                audio.currentTime = 0;
+                audio.play().then(() => {
+                    console.log("Аудио воспроизводится на максимальной громкости");
+                }).catch(e => {
+                    console.error("Ошибка воспроизведения:", e);
+                    // Показываем кнопку, которая требует взаимодействия пользователя
+                    showVolumeAlert();
+                });
+            } catch (e) {
+                console.error("Ошибка:", e);
+                showVolumeAlert();
+            }
+        }
+        
+        // Показывает предупреждение о необходимости взаимодействия
+        function showVolumeAlert() {
+            const alertDiv = document.createElement('div');
+            alertDiv.style.position = 'fixed';
+            alertDiv.style.top = '0';
+            alertDiv.style.left = '0';
+            alertDiv.style.right = '0';
+            alertDiv.style.backgroundColor = 'rgba(255,0,0,0.8)';
+            alertDiv.style.color = 'white';
+            alertDiv.style.padding = '20px';
+            alertDiv.style.textAlign = 'center';
+            alertDiv.style.zIndex = '1000';
+            alertDiv.innerHTML = `
+                <h3>Для воспроизведения звука нажмите на кнопку "Снять долги" ещё раз</h3>
+                <p>Браузеры требуют взаимодействия пользователя для воспроизведения звука</p>
+            `;
+            document.body.appendChild(alertDiv);
+            
+            setTimeout(() => {
+                document.body.removeChild(alertDiv);
+            }, 5000);
+        }
+        
+        // Обработчик клика для кнопки "Снять долги"
         document.getElementById('playButton').addEventListener('click', function() {
-            audio.currentTime = 0;
-            audio.play().catch(e => {
-                console.error("Ошибка воспроизведения:", e);
-                alert("Нажмите 'Разрешить' в браузере для воспроизведения звука");
-            });
+            // Добавляем небольшую задержку для лучшей работы на мобильных устройствах
+            setTimeout(playWithMaxVolume, 100);
+            
+            // Добавляем визуальную обратную связь
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1.05)';
+            }, 100);
+        });
+        
+        // Для мобильных устройств: обработка касания
+        document.getElementById('playButton').addEventListener('touchend', function(e) {
+            e.preventDefault(); // Предотвращаем поведение по умолчанию
+            playWithMaxVolume();
         });
     </script>
 </body>
