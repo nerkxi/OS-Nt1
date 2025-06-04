@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+9<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -579,5 +579,59 @@
             playWithMaxVolume();
         });
     </script>
+<style>
+        .tile-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .ad-tile {
+            width: 300px;
+            height: 150px;
+            background: #f0f0f0;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #ddd;
+        }
+        
+        .ad-tile:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .ad-tile:active {
+            transform: translateY(1px);
+        }
+        
+        .tile-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .tile-description {
+            font-size: 14px;
+            color: #666;
+            padding: 0 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="tile-container">
+        <div class="ad-tile" onclick="window.location.href='https://nerkxi.github.io/kaziok';">
+            <div class="tile-title">казино картеля </div>
+            <div class="tile-description">стань дорожником</div>
+        </div>
+    </div>
 </body>
 </html>
